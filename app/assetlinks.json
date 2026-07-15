@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "africa.velcrest.prime",
+        "sha256_cert_fingerprints": ["AD:E0:B7:DA:C1:EC:AF:03:24:1E:54:63:0E:B8:8A:93:2B:7B:FE:6F:E3:CA:81:5B:2D:C8:CD:EE:1D:D0:21:E6"]
+      }
+    }]
