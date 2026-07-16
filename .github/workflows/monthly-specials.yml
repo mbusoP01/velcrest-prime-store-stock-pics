@@ -1,0 +1,26 @@
+name: Monthly Specials Swap
+
+on:
+  schedule:
+    - cron: "0 2 1 * *"   # 02:00 UTC on the 1st of every month
+  workflow_dispatch:       # lets you run it by hand any time (to test / catch up)
+    inputs:
+      month:
+        description: "Force a month as YYYY-MM (leave blank for the current month)"
+        required: false
+        default: ""
+
+jobs:
+  swap:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Swap bundles
+        env:
+          SHOPIFY_STORE: velcrest-prime
+          SHOPIFY_TOKEN: ${{ secrets.SHOPIFY_TOKEN }}
+          SPECIALS_MONTH: ${{ github.event.inputs.month }}
+        run: python automation/monthly_specials.py
